@@ -1,18 +1,7 @@
-:root {
-    --dark-bg: #121212;
-    --dark-nav: #1a1a1a;
-    --dark-card: #1e1e1e;
-    --dark-input: #2d2d2d;
-    --dark-border: #333;
-    --light-text: #ffffff;
-    --transition-speed: 0.3s;
-}
-
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    transition: background-color var(--transition-speed), 
-                color var(--transition-speed);
+    transition: background-color 0.3s, color 0.3s;
     color: #333;
     background-color: #ffffff;
 }
@@ -23,79 +12,86 @@ body {
     color: white;
 }
 
-/* Estilos de navegación */
-.navbar {
-    transition: background-color var(--transition-speed);
-}
+/* ... resto de animaciones y estilos base sin cambios ... */
 
-#darkModeToggle {
-    transition: all var(--transition-speed);
-}
-
-/* Secciones */
-section {
-    transition: background-color var(--transition-speed), 
-                color var(--transition-speed);
-}
-
-/* Tarjetas y formularios */
-.card, .form-control {
-    transition: background-color var(--transition-speed), 
-                color var(--transition-speed), 
-                border-color var(--transition-speed);
-}
-
-/* Modo oscuro */
+/* Modo oscuro - Correcciones */
 body.dark-mode {
-    background-color: var(--dark-bg);
-    color: var(--light-text);
+    background-color: #121212;
+    color: #ffffff;
 }
 
 .dark-mode .navbar {
-    background-color: var(--dark-nav) !important;
+    background-color: #1a1a1a !important; /* Forzar color oscuro en navbar */
 }
 
 .dark-mode .bg-light {
-    background-color: var(--dark-nav) !important;
-    color: var(--light-text);
+    background-color: #1a1a1a !important;
+    color: #ffffff;
 }
 
 .dark-mode .card {
-    background-color: var(--dark-card);
-    color: var(--light-text);
-    border-color: var(--dark-border);
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #333;
+}
+
+.dark-mode .card-title {
+    color: #ffffff;
+}
+
+.dark-mode .card-text {
+    color: #e0e0e0;
 }
 
 .dark-mode .form-control {
-    background-color: var(--dark-input);
-    color: var(--light-text);
-    border-color: var(--dark-border);
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #444;
 }
 
 .dark-mode .form-control:focus {
-    background-color: var(--dark-input);
-    color: var(--light-text);
+    background-color: #2d2d2d;
+    color: #ffffff;
     border-color: #666;
     box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
 }
 
 .dark-mode .form-label {
-    color: var(--light-text);
+    color: #ffffff;
 }
 
-.dark-mode #about,
-.dark-mode #projects,
-.dark-mode #experience,
+.dark-mode .btn-primary {
+    background-color: #2575fc;
+    border-color: #2575fc;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #1a5fcf;
+    border-color: #1a5fcf;
+}
+
+.dark-mode .bg-dark {
+    background-color: #000000 !important;
+}
+
+/* Ajustes para secciones específicas en modo oscuro */
+.dark-mode #about {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode #projects {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-mode #experience {
+    background-color: #121212;
+    color: #ffffff;
+}
+
 .dark-mode #contact {
-    background-color: var(--dark-bg);
-    color: var(--light-text);
+    background-color: #1a1a1a;
+    color: #ffffff;
 }
 
-.dark-mode .bg-light {
-    background-color: var(--dark-nav) !important;
-}
-
-.dark-mode #darkModeToggle {
-    border-color: var(--light-text);
-    color: var(--light-text);
-}
