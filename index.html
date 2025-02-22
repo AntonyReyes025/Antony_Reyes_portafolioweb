@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional de Antony Reyes, desarrollador frontend con experiencia en tecnologías modernas.">
+    <meta name="keywords" content="desarrollador frontend, portafolio, proyectos, experiencia, contacto">
+    <meta name="author" content="Antony Reyes">
+    <title>Portafolio - Antony Reyes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            height: 100vh;
+            color: white;
+        }
+
+        /* Estilos para las tarjetas de proyectos */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-content {
+            position: relative;
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            font-size: 1rem;
+        }
+
+        /* Modo oscuro - Correcciones */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode .navbar {
+            background-color: #1a1a1a !important;
+        }
+
+        .dark-mode .bg-light {
+            background-color: #1a1a1a !important;
+            color: #ffffff;
+        }
+
+        .dark-mode .card {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border-color: #333;
+        }
+
+        .dark-mode .card-title {
+            color: #ffffff;
+        }
+
+        .dark-mode .card-text {
+            color: #e0e0e0;
+        }
+
+        .dark-mode .form-control {
+            background-color: #2d2d2d;
+            color: #ffffff;
+            border-color: #444;
+        }
+
+        .dark-mode .form-control:focus {
+            background-color: #2d2d2d;
+            color: #ffffff;
+            border-color: #666;
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+        }
+
+        .dark-mode .form-label {
+            color: #ffffff;
+        }
+
+        .dark-mode .btn-primary {
+            background-color: #2575fc;
+            border-color: #2575fc;
+        }
+
+        .dark-mode .btn-primary:hover {
+            background-color: #1a5fcf;
+            border-color: #1a5fcf;
+        }
+
+        .dark-mode .bg-dark {
+            background-color: #000000 !important;
+        }
+
+        /* Ajustes para secciones específicas en modo oscuro */
+        .dark-mode #about {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode #projects {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .dark-mode #experience {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode #contact {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Portafolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre Mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experiencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="darkModeToggle" class="btn btn-outline-light">🌙 Modo Oscuro</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Homepage -->
+    <section id="home" class="gradient-bg d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXxww56s8TE-9KBn0VCTwW0xbcbtoQ7JcsA&s" alt="Foto de Antony Reyes" class="img-thumbnail rounded-circle mb-3">
+            <h1 class="animated-text">Antony Reyes</h1>
+            <p class="lead developer-title">Desarrollador Frontend | Especialista en HTML5, CSS, JavaScript y React</p>
+            <div class="social-icons mt-4">
+                <a href="https://linkedin.com/in/antony-reyes" class="text-light mx-2"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/antony-reyes" class="text-light mx-2"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/antony-reyes" class="text-light mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/antony-reyes" class="text-light mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/antony-reyes" class="text-light mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="https://youtube.com/antony-reyes" class="text-light mx-2"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Sobre Mí</h2>
+            <p class="text-center">Soy Antony Reyes, un desarrollador frontend con más de 5 años de experiencia en la creación de interfaces de usuario modernas y responsivas. Me especializo en tecnologías como HTML5, CSS3, JavaScript, React y Bootstrap. Me apasiona crear soluciones digitales que sean tanto funcionales como visualmente atractivas. Siempre estoy buscando aprender nuevas tecnologías y mejorar mis habilidades para ofrecer los mejores resultados.</p>
+        </div>
+    </section>
+
+    <!-- Proyectos con efectos hover -->
+    <section id="projects" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Proyectos</h2>
+            <div class="row">
+                <!-- Proyecto 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1683497560206/46862776-a7ab-493c-943b-36f9ab138e92.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp" class="card-img-top project-image" alt="Proyecto 1">
+                            <div class="project-overlay">
+                                <h5 class="project-title">E-commerce React</h5>
+                                <p class="project-description">Desarrollo de una plataforma de comercio electrónico utilizando React y Redux para la gestión del estado. Integración con APIs de pago y envío.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <img src="https://cdn.dribbble.com/users/2659777/screenshots/6100524/3.jpg?resize=400x0" class="card-img-top project-image" alt="Proyecto 2">
+                            <div class="project-overlay">
+                                <h5 class="project-title">Blog Personal</h5>
+                                <p class="project-description">Creación de un blog personal con diseño responsivo, utilizando HTML5, CSS3 y JavaScript. Integración con un CMS para la gestión de contenido.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <img src="https://descubre-nueva-app.clima.com/images/landing-hero.png" class="card-img-top project-image" alt="Proyecto 3">
+                            <div class="project-overlay">
+                                <h5 class="project-title">Aplicación del Clima</h5>
+                                <p class="project-description">Aplicación web que muestra el clima actual y el pronóstico para los próximos días. Utiliza una API de clima y está desarrollada con JavaScript puro.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia con efectos hover -->
+    <section id="experience" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Experiencia Profesional</h2>
+            <div class="row">
+                <!-- Experiencia 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="experience-card">
+                        <div class="experience-content">
+                            <img src="https://www.certus.edu.pe/blog/wp-content/uploads/2021/01/que-hace-front-end.jpg" class="card-img-top project-image" alt="Desarrollador Frontend">
+                            <div class="experience-overlay">
+                                <h5 class="experience-title">Desarrollador Frontend</h5>
+                                <p class="experience-company">Tech Solutions Inc. | 2020 - Presente</p>
+                                <p class="experience-description">Desarrollo de interfaces de usuario para aplicaciones web y móviles utilizando React y TypeScript. Colaboración en equipo con diseñadores y backend developers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experiencia 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="experience-card">
+                        <div class="experience-content">
+                            <img src="https://cdn.appdesign.dev/wp-content/uploads/2024/05/Diseno-UX-UI.webp" class="card-img-top project-image" alt="Diseñador UI/UX">
+                            <div class="experience-overlay">
+                                <h5 class="experience-title">Diseñador UI/UX</h5>
+                                <p class="experience-company">Creative Studio | 2018 - 2020</p>
+                                <p class="experience-description">Diseño de interfaces y experiencia de usuario para clientes de diversos sectores. Creación de prototipos y wireframes en Figma.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experiencia 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="experience-card">
+                        <div class="experience-content">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E12AQEm8N3wD_uIhw/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1680798686039?e=2147483647&v=beta&t=cu4tBBKx4zhwyj5ZdOWN-gCz0OzEw9V12IkSOt4Ovbc" class="card-img-top project-image" alt="Practicante de Desarrollo">
+                            <div class="experience-overlay">
+                                <h5 class="experience-title">Practicante de Desarrollo</h5>
+                                <p class="experience-company">Startup Innovadora | 2017 - 2018</p>
+                                <p class="experience-description">Apoyo en el desarrollo de aplicaciones web utilizando HTML, CSS y JavaScript. Participación en proyectos de innovación tecnológica.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Contacto</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; 2023 Antony Reyes. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts personalizados -->
+    <script>
+        // Modo oscuro
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Función para actualizar el modo oscuro
+        function updateDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                darkModeToggle.textContent = '☀️ Modo Claro';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                darkModeToggle.textContent = '🌙 Modo Oscuro';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Event listener para el botón de cambio de modo
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('dark-mode');
+            updateDarkMode(isDark);
+        });
+
+        // Cargar tema guardado y preferencias del sistema
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (savedTheme === null && prefersDark)) {
+                updateDarkMode(true);
+            } else {
+                updateDarkMode(false);
+            }
+        });
+
+        // Escuchar cambios en las preferencias del sistema
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('theme') === null) {
+                updateDarkMode(e.matches);
+            }
+        });
+    </script>
+</body>
+</html>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
