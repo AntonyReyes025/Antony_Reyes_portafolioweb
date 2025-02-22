@@ -1,8 +1,8 @@
-// Modo oscuro
+
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
-// Función para actualizar el modo oscuro
+
 function updateDarkMode(isDark) {
     if (isDark) {
         body.classList.add('dark-mode');
@@ -15,13 +15,13 @@ function updateDarkMode(isDark) {
     }
 }
 
-// Event listener para el botón de cambio de modo
+
 darkModeToggle.addEventListener('click', () => {
     const isDark = !body.classList.contains('dark-mode');
     updateDarkMode(isDark);
 });
 
-// Cargar tema guardado y preferencias del sistema
+
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Escuchar cambios en las preferencias del sistema
+
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (localStorage.getItem('theme') === null) {
         updateDarkMode(e.matches);
